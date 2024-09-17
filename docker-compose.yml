@@ -41,7 +41,7 @@ services:
     deploy:
       mode: replicated
       replicas: 3
-    image: liceum_server/app:vtest6
+    image: cofeein_server/app:vtest6
     ports:
       - '9000-9003:90'
     depends_on:
@@ -63,7 +63,7 @@ services:
       - REDIS_PORT=6379
 
   nginx:
-    image: liceum_server/nginx:vtest7
+    image: coffein_server/nginx:vtest1
     build:
       dockerfile: nginx/Dockerfile
       context: .
