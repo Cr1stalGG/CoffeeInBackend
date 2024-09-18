@@ -6,30 +6,24 @@ scrape_configs:
   - job_name: 'prometheus'
     scrape_interval: 5s
     static_configs:
-      - targets: ['localhost:9090']
+      - targets: ['172.17.0.1:9090']
 
   - job_name: 'spring-boot-app-actuator'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-      - targets: [ 'localhost:8080' ]
-
-  - job_name: 'spring-boot-app-prometheus'
-    metrics_path: '/prometheus'
-    scrape_interval: 5s
-    static_configs:
-      - targets: [ 'localhost:8080' ]
+      - targets: [ '172.17.0.1:8080' ]
 
   - job_name: 'postgres'
     scrape_interval: 5s
     static_configs:
-      - targets: ['localhost:5432']
+      - targets: ['172.17.0.1:5432']
         labels:
           alias: 'postgres'
 
   - job_name: 'redis'
     scrape_interval: 5s
     static_configs:
-      - targets: ['localhost:6379']
+      - targets: ['172.17.0.1:6379']
         labels:
           alias: 'redis'

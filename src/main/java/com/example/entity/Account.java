@@ -47,7 +47,7 @@ public class Account {
             mappedBy = "owner",
             orphanRemoval = true
     )
-    private List<Card> card;
+    private List<Card> cards;
 
     @OneToMany(
             fetch = FetchType.LAZY,
