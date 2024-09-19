@@ -196,6 +196,13 @@
 			<version>${kotlin.version}</version>
 			<scope>runtime</scope>
 		</dependency>
+
+<!--REMOVE-->
+		<dependency>
+			<groupId>org.jetbrains.kotlinx</groupId>
+			<artifactId>kotlinx-coroutines-core</artifactId>
+			<version>1.8.1</version>
+		</dependency>
     </dependencies>
 
 	<build>
@@ -210,7 +217,7 @@
 					<url>jdbc:h2:file:./target/h2db/db/coffeIn</url>
 					<username>coffeIn</username>
 					<password />
-					<outputChangeLogFile>src/main/resources/liquibase-outputChangeLog.xml</outputChangeLogFile>
+					<outputChangeLogFile>src/com.example.main/resources/liquibase-outputChangeLog.xml</outputChangeLogFile>
 				</configuration>
 			</plugin>
 

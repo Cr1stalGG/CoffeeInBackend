@@ -1,4 +1,4 @@
-package com.example.service.impl
+package com.example.service
 
 import com.example.dto.account.AccountFullDto
 import com.example.dto.account.AccountShortcutDto

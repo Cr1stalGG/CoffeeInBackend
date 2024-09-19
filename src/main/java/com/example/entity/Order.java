@@ -32,7 +32,7 @@ public class Order {
     @UuidGenerator(style = UuidGenerator.Style.AUTO)
     private UUID id;
     @Column(name = "closing_time")
-    private Date cosingTime;
+    private Date closingTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id")

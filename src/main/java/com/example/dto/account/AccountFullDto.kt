@@ -7,9 +7,9 @@ import java.util.UUID
 
 data class AccountFullDto(
     val uuid: UUID,
-    val nickname: String,
+    var nickname: String?,
     val login: String,
-    val image: ImageDto,
-    val cards: List<CardDto>,
-    val roles: List<RoleDto>,
+    val image: ImageDto?,
+    val cards: List<CardDto>?,
+    val roles: List<RoleDto>?,
 )
