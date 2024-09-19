@@ -46,4 +46,28 @@ public class Card {
             orphanRemoval = true
     )
     private List<Transaction> transactions;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getCvv() {
+        return cvv;
+    }
+
+    public Account getOwner() {
+        return owner;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
 }

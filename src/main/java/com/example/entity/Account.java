@@ -63,4 +63,36 @@ public class Account {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private List<Role> roles;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public List<Card> getCards() {
+        return cards;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
 }

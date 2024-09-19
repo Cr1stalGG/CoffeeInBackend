@@ -39,4 +39,20 @@ public class Transaction {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Order order;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public Date getTimeOfTransaction() {
+        return timeOfTransaction;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
 }

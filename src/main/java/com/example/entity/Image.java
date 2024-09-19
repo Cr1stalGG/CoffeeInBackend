@@ -28,4 +28,16 @@ public class Image {
     private String objectName;
     @Column(name = "bucketName")
     private String bucketName;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getObjectName() {
+        return objectName;
+    }
+
+    public String getBucketName() {
+        return bucketName;
+    }
 }

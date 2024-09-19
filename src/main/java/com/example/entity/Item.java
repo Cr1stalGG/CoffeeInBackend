@@ -51,4 +51,28 @@ public class Item {
             inverseJoinColumns = @JoinColumn(name = "order_id")
     )
     private List<Order> orders;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
 }

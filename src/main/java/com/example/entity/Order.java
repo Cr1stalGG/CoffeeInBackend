@@ -45,4 +45,20 @@ public class Order {
             inverseJoinColumns = @JoinColumn(name = "item_id")
     )
     private List<Item> items;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public Date getClosingTime() {
+        return closingTime;
+    }
+
+    public Account getOwner() {
+        return owner;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
 }
