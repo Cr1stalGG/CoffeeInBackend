@@ -4,6 +4,7 @@ import com.example.dto.account.AccountFullDto
 import com.example.dto.account.AccountShortcutDto
 import com.example.dto.mapper.AccountDtoMapper
 import com.example.entity.Account
+import com.example.exception.AccountWithIdNotFoundException
 import com.example.repository.AccountRepository
 import com.example.service.AccountService
 import org.springframework.stereotype.Service
@@ -14,9 +15,10 @@ class AccountServiceImpl(
     val accountRepository: AccountRepository
 ) : AccountService {
     override fun findById(id: UUID): AccountFullDto {
-        val account: Optional<Account> = accountRepository.findById(id)
+        val account: Account = accountRepository.findById(id)
+            .orElseThrow{AccountWithIdNotFoundException(id)}
 
-        return AccountDtoMapper.convertEntityToFullDto(account.orElse(null))
+        return AccountDtoMapper.convertEntityToFullDto(account)
     }
 
     override fun findAll(): List<AccountShortcutDto> {
@@ -26,6 +28,9 @@ class AccountServiceImpl(
     }
 
     override fun deleteById(id: UUID) {
+        val account: Account = accountRepository.findById(id)
+            .orElseThrow{AccountWithIdNotFoundException(id)}
+
         accountRepository.deleteById(id)
     }
 }
