@@ -1,15 +1,14 @@
 package com.example.dto.image;
 
 import java.util.UUID;
+import lombok.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ImageFullDto {
+public class ImageDto {
     private UUID id;
     private String objectName;
     private String bucketName;

@@ -1,16 +1,17 @@
 package com.example.dto.account;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import com.example.dto.image.ImageDto;
+import lombok.*;
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccountShortCutDto {
     private UUID id;
     private String nickname;
     private String login;
+    private ImageDto image;
 }
