@@ -1,9 +1,11 @@
 package com.example.dto.category;
 
-import java.util.List;
 import java.util.UUID;
-import com.example.dto.item.ItemDto;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.AllArgsConstructor;
 
 @Getter
 @Setter

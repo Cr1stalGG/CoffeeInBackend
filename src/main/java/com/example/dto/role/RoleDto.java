@@ -1,7 +1,11 @@
 package com.example.dto.role;
 
 import java.util.UUID;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.AllArgsConstructor;
 
 @Getter
 @Setter

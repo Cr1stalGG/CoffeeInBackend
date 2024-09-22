@@ -1,7 +1,11 @@
 package com.example.dto.account;
 
 import com.example.dto.image.ImageDto;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.AllArgsConstructor;
 import java.util.UUID;
 
 @Getter
@@ -9,7 +13,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountShortCutDto {
+public class AccountShortсutDto {
     private UUID id;
     private String nickname;
     private String login;

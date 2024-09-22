@@ -3,7 +3,11 @@ package com.example.dto.card;
 import com.example.dto.transaction.TransactionDto;
 import java.util.List;
 import java.util.UUID;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.AllArgsConstructor;
 
 @Getter
 @Setter
