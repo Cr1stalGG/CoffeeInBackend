@@ -17,7 +17,7 @@ import com.example.repository.ItemRepository
 import com.example.service.ItemService
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import java.util.*
+import java.util.UUID
 
 @Service
 class ItemServiceImpl(
