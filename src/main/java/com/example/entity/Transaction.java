@@ -40,19 +40,4 @@ public class Transaction {
     @JoinColumn(name = "order_id")
     private Order order;
 
-    public UUID getId() {
-        return id;
-    }
-
-    public Date getTimeOfTransaction() {
-        return timeOfTransaction;
-    }
-
-    public Card getCard() {
-        return card;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
 }

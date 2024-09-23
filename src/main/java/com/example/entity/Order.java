@@ -55,24 +55,4 @@ public class Order {
         this.summaryPrice = summaryPrice;
         this.items = items;
     }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public Date getClosingTime() {
-        return closingTime;
-    }
-
-    public Double getSummaryPrice() {
-        return summaryPrice;
-    }
-
-    public Account getOwner() {
-        return owner;
-    }
-
-    public List<Item> getItems() {
-        return items;
-    }
 }

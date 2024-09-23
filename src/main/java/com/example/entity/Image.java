@@ -12,7 +12,6 @@ import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nullable;
 import java.util.UUID;
 
 @Entity
@@ -25,7 +24,6 @@ import java.util.UUID;
 public class Image {
     @Id
     @UuidGenerator(style = UuidGenerator.Style.AUTO)
-    @Nullable
     private UUID id;
     @Column(name = "object_name")
     private String objectName;
@@ -35,17 +33,5 @@ public class Image {
     public Image(@NotNull String objectName, @NotNull String bucketName) {
         this.bucketName = bucketName;
         this.objectName = objectName;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public String getObjectName() {
-        return objectName;
-    }
-
-    public String getBucketName() {
-        return bucketName;
     }
 }
