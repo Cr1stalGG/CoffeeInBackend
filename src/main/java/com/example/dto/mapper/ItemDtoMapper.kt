@@ -13,6 +13,7 @@ class ItemDtoMapper {
                 uuid = source.id,
                 name = source.name,
                 description = source.description,
+                price = source.price,
                 category = CategoryDtoMapper.convertEntityToDto(source.category),
                 image = ImageDtoMapper.convertEntityToDto(source.image)
             )
@@ -21,7 +22,8 @@ class ItemDtoMapper {
         fun convertDtoToEntity(source: ItemCreationDto): Item {
             return Item(
                 source.name,
-                source.description
+                source.description,
+                source.price
             )
         }
     }

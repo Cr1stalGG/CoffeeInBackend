@@ -36,11 +36,12 @@ public class Item {
     private String name;
     @Column(name = "description")
     private String description;
+    @Column(name = "price")
+    private Double price;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
-
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "image_id")
     private Image image;
@@ -53,9 +54,34 @@ public class Item {
     )
     private List<Order> orders;
 
-    public Item(@NotNull String name, @NotNull String description){
+    public Item(@NotNull String name, @NotNull String description, @NotNull Double price){
         this.name = name;
         this.description = description;
+        this.price = price;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public UUID getId() {
@@ -68,6 +94,10 @@ public class Item {
 
     public String getDescription() {
         return description;
+    }
+
+    public Double getPrice() {
+        return price;
     }
 
     public Category getCategory() {

@@ -8,6 +8,7 @@ data class ItemDto(
     val uuid: UUID,
     val name: String,
     val description: String,
+    val price: Double,
     val category: CategoryDto,
     val image: ImageDto?,
 )

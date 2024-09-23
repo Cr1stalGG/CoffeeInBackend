@@ -13,7 +13,8 @@ class OrderDtoMapper {
             return OrderDto(
                 uuid = source.id,
                 closingTime = source.closingTime,
-                items = buildItems(source.items)
+                items = buildItems(source.items),
+                summaryPrice = source.summaryPrice
             )
         }
 

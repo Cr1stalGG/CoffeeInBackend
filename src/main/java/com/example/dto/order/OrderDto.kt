@@ -7,5 +7,6 @@ import java.util.*
 data class OrderDto(
     val uuid: UUID,
     val closingTime: Date,
-    val items: List<ItemDto>
+    val items: List<ItemDto>,
+    val summaryPrice: Double,
 )

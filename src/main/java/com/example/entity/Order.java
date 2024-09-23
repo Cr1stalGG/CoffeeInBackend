@@ -38,6 +38,9 @@ public class Order {
     @JoinColumn(name = "account_id")
     private Account owner;
 
+    @Column(name = "summary_price")
+    private Double summaryPrice;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "orders_items",
@@ -46,12 +49,23 @@ public class Order {
     )
     private List<Item> items;
 
+    public Order(Date closingTime, Account owner, Double summaryPrice, List<Item> items) {
+        this.closingTime = closingTime;
+        this.owner = owner;
+        this.summaryPrice = summaryPrice;
+        this.items = items;
+    }
+
     public UUID getId() {
         return id;
     }
 
     public Date getClosingTime() {
         return closingTime;
+    }
+
+    public Double getSummaryPrice() {
+        return summaryPrice;
     }
 
     public Account getOwner() {
