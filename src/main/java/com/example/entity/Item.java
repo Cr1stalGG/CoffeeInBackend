@@ -10,6 +10,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -51,6 +52,11 @@ public class Item {
             inverseJoinColumns = @JoinColumn(name = "order_id")
     )
     private List<Order> orders;
+
+    public Item(@NotNull String name, @NotNull String description){
+        this.name = name;
+        this.description = description;
+    }
 
     public UUID getId() {
         return id;

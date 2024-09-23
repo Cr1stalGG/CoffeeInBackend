@@ -1,5 +1,6 @@
 package com.example.dto.mapper
 
+import com.example.dto.item.ItemCreationDto
 import com.example.dto.item.ItemDto
 import com.example.entity.Item
 import lombok.experimental.UtilityClass
@@ -14,6 +15,13 @@ class ItemDtoMapper {
                 description = source.description,
                 category = CategoryDtoMapper.convertEntityToDto(source.category),
                 image = ImageDtoMapper.convertEntityToDto(source.image)
+            )
+        }
+
+        fun convertDtoToEntity(source: ItemCreationDto): Item {
+            return Item(
+                source.name,
+                source.description
             )
         }
     }
