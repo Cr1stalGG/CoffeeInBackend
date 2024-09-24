@@ -47,8 +47,15 @@ create table items(
     image_id uuid references images(id)
 );
 
+create table order_statuses(
+    id uuid primary key,
+    name varchar(32) unique not null,
+    description text not null
+);
+
 create table orders(
     id uuid primary key,
+    order_status_id uuid references order_statuses(id),
     account_id uuid references accounts(id),
     summary_price numeric not null check(summary_price > 0),
     closing_time timestamp

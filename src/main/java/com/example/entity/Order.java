@@ -47,4 +47,8 @@ public class Order {
             inverseJoinColumns = @JoinColumn(name = "item_id")
     )
     private List<Item> items;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_status_id")
+    private OrderStatus orderStatus;
 }

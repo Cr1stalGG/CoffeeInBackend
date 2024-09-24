@@ -37,16 +37,20 @@
         <sqlFile encoding="utf8" path="./initial-scheme/07.create-items-table.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
+    <changeSet id="initial-order_statuses" author="Alexander Savickij">
+        <sqlFile encoding="utf8" path="./initial-scheme/08.create-order_statuses-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
     <changeSet id="initial-orders" author="Alexander Savickij">
-        <sqlFile encoding="utf8" path="./initial-scheme/08.create-orders-table.sql" relativeToChangelogFile="true"/>
+        <sqlFile encoding="utf8" path="./initial-scheme/09.create-orders-table.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
     <changeSet id="initial-orders_items" author="Alexander Savickij">
-        <sqlFile encoding="utf8" path="./initial-scheme/09.create-orders_items-table.sql" relativeToChangelogFile="true"/>
+        <sqlFile encoding="utf8" path="./initial-scheme/10.create-orders_items-table.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
     <changeSet id="initial-transactions" author="Alexander Savickij">
-        <sqlFile encoding="utf8" path="./initial-scheme/10.create-transactions-table.sql" relativeToChangelogFile="true"/>
+        <sqlFile encoding="utf8" path="./initial-scheme/11.create-transactions-table.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
 </databaseChangeLog>
