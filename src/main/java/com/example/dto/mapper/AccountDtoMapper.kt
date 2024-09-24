@@ -10,7 +10,7 @@ import com.example.entity.Role
 import lombok.experimental.UtilityClass
 
 @UtilityClass
-class AccountDtoMapper {
+class AccountDtoMapper { //todo replace to object
     companion object{
         fun convertEntityToFullDto(source: Account): AccountFullDto{
             return AccountFullDto(
