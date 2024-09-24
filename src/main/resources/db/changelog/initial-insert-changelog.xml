@@ -13,5 +13,8 @@
         <sqlFile encoding="utf8" path="./initial-insert/01.insert-roles.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
+    <changeSet id="insert-order_statuses" author="Alexander Savickij">
+        <sqlFile encoding="utf8" path="./initial-insert/02.insert-order_statuses.sql" relativeToChangelogFile="true"/>
+    </changeSet>
 
 </databaseChangeLog>

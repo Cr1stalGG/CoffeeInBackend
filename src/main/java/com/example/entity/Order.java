@@ -49,6 +49,10 @@ public class Order {
     )
     private List<Item> items;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_status_id")
+    private OrderStatus orderStatus;
+
     public Order(Date closingTime, Account owner, Double summaryPrice, List<Item> items) {
         this.closingTime = closingTime;
         this.owner = owner;
