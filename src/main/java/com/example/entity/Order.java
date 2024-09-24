@@ -33,6 +33,8 @@ public class Order {
     private UUID id;
     @Column(name = "closing_time")
     private Date cosingTime;
+    @Column(name = "summary_price")
+    private Double summaryPrice;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id")

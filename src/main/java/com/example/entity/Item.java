@@ -35,6 +35,8 @@ public class Item {
     private String name;
     @Column(name = "description")
     private String description;
+    @Column(name = "price")
+    private Double price;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
