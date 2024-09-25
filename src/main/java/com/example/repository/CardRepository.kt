@@ -7,5 +7,5 @@ import java.util.UUID
 
 @Repository
 interface CardRepository: JpaRepository<Card, UUID> {
-    fun findByNumber(number: String): Card?
+    fun findByOwner_Id(id: UUID): List<Card>
 }

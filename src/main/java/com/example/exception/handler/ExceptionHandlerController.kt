@@ -2,6 +2,7 @@ package com.example.exception.handler
 
 import com.example.exception.AccountWithIdNotFoundException
 import com.example.exception.CannotChangeOrderStatusException
+import com.example.exception.CardWithIdNotFoundException
 import com.example.exception.CategoryWithIdNotFoundException
 import com.example.exception.ItemWithIdNotFoundException
 import com.example.exception.OrderStatusWithNameNotFoundException
@@ -17,6 +18,7 @@ class ExceptionHandlerController {
         ItemWithIdNotFoundException::class,
         CategoryWithIdNotFoundException::class,
         OrderStatusWithNameNotFoundException::class,
+        CardWithIdNotFoundException::class,
     )
     fun handleNotFoundException(e: RuntimeException): ResponseEntity<String>{
         return ResponseEntity<String>("Not found exception: " + e.message, HttpStatus.BAD_REQUEST)
