@@ -5,7 +5,7 @@ public enum RoleEnum {
     ROLE_ADMIN("ROLE_ADMIN"),
     ROLE_EMPLOYER("ROLE_EMPLOYER");
 
-    private String value;
+    private final String value;
 
     RoleEnum(String value){
         this.value = value;
