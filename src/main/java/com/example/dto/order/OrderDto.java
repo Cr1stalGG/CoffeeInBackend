@@ -20,4 +20,5 @@ public class OrderDto {
     private UUID uuid;
     private Date closingTime;
     private List<ItemDto> items;
+    private Double summaryPrice;
 }
