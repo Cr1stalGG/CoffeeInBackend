@@ -1,6 +1,6 @@
 package com.example.dto.item;
 
-import com.example.dto.category.CategoryDto;
+import java.util.UUID;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -16,5 +16,5 @@ import lombok.AllArgsConstructor;
 public class ItemCreationDto {
     private String name;
     private String description;
-    private CategoryDto category;
+    private UUID categoryId;
 }
