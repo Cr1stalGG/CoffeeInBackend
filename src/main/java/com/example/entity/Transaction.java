@@ -40,4 +40,9 @@ public class Transaction {
     @JoinColumn(name = "order_id")
     private Order order;
 
+    public Transaction(Card card, Order order, Date timeOfTransaction) {
+        this.timeOfTransaction = timeOfTransaction;
+        this.card = card;
+        this.order = order;
+    }
 }
