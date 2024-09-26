@@ -35,6 +35,8 @@ public class Card {
     private String password; //todo encode
     @Column(name = "cvv")
     private String cvv; //todo encode
+    @Column(name = "money")
+    private Double money;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "accountId")
@@ -46,4 +48,10 @@ public class Card {
             orphanRemoval = true
     )
     private List<Transaction> transactions;
+
+    public Card(String number, String password, String cvv) {
+        this.number = number;
+        this.password = password;
+        this.cvv = cvv;
+    }
 }
