@@ -16,5 +16,6 @@ import lombok.AllArgsConstructor;
 public class ItemCreationDto {
     private String name;
     private String description;
+    private Double price;
     private UUID categoryId;
 }

@@ -19,6 +19,7 @@ public class ItemDto {
     private UUID uuid;
     private String name;
     private String description;
+    private Double price;
     private CategoryDto category;
     private ImageDto image;
 }
