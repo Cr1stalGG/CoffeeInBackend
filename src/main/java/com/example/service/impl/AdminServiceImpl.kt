@@ -2,9 +2,12 @@ package com.example.service.impl
 
 import com.example.controller.EmployerCreationDto
 import com.example.dto.account.AccountFullDto
+import com.example.dto.category.CategoryCreationDto
+import com.example.dto.category.CategoryDto
 import com.example.dto.item.ItemCreationDto
 import com.example.dto.item.ItemDto
 import com.example.dto.mapper.AccountDtoMapper
+import com.example.dto.mapper.CategoryDtoMapper
 import com.example.dto.mapper.ItemDtoMapper
 import com.example.entity.Account
 import com.example.entity.Category
@@ -71,6 +74,14 @@ class AdminServiceImpl(
         category.items.plusAssign(item)
 
         return ItemDtoMapper.convertEntityToDto(item)
+    }
+
+    override fun addNewCategory(creationDto: CategoryCreationDto): CategoryDto {
+        val category: Category = CategoryDtoMapper.convertDtoToEntity(creationDto)
+
+        categoryRepository.save(category)
+
+        return CategoryDtoMapper.convertEntityToDto(category)
     }
 
     @Transactional

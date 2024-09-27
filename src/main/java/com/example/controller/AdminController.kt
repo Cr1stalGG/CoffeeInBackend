@@ -1,6 +1,8 @@
 package com.example.controller
 
 import com.example.dto.account.AccountFullDto
+import com.example.dto.category.CategoryCreationDto
+import com.example.dto.category.CategoryDto
 import com.example.dto.item.ItemCreationDto
 import com.example.dto.item.ItemDto
 import com.example.service.AdminService
@@ -30,6 +32,11 @@ class AdminController(
     @PostMapping("/items")
     fun addNewItem(@RequestBody creationDto: ItemCreationDto): ItemDto {
         return adminService.addNewItem(creationDto)
+    }
+
+    @PostMapping("/categories")
+    fun addNewCategory(@RequestBody creationDto: CategoryCreationDto): CategoryDto {
+        return adminService.addNewCategory(creationDto)
     }
 
     @PutMapping("/accounts/{accountId}/roles/{roleName}")

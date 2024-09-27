@@ -39,4 +39,8 @@ public class Category {
     )
     private List<Item> items;
 
+    public Category(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 }
