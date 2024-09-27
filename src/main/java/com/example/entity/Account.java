@@ -1,5 +1,6 @@
 package com.example.entity;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -40,6 +41,7 @@ public class Account {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "image_id")
+    @Nullable
     private Image image;
 
     @OneToMany(

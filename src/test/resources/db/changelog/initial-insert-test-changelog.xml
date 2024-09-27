@@ -17,4 +17,16 @@
         <sqlFile encoding="utf8" path="./initial-insert-test/02.insert-order_statuses.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
+    <changeSet id="insert-admin" author="Alexander Savickij">
+        <sqlFile encoding="utf8" path="./initial-insert-test/03.insert-admin.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="insert-accounts" author="Alexander Savickij">
+        <sqlFile encoding="utf8" path="./initial-insert-test/04.insert-accounts.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="insert-employers" author="Alexander Savickij">
+        <sqlFile encoding="utf8" path="./initial-insert-test/05.insert-employers.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
 </databaseChangeLog>
