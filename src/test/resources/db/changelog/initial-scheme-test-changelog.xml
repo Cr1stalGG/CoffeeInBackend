@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+      http://www.liquibase.org/xml/ns/pro
+      http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd"
+        logicalFilePath="changelog">
+
+    <changeSet id="initial-images" author="Alexander Savickij">
+        <sqlFile encoding="utf8" path="./initial-scheme-test/01.create-images-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="initial-roles" author="Alexander Savickij">
+        <sqlFile encoding="utf8" path="./initial-scheme-test/02.create-roles-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="initial-accounts" author="Alexander Savickij">
+        <sqlFile encoding="utf8" path="./initial-scheme-test/03.create-accounts-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="initial-cards" author="Alexander Savickij">
+        <sqlFile encoding="utf8" path="./initial-scheme-test/04.create-cards-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="initial-accounts_roles" author="Alexander Savickij">
+        <sqlFile encoding="utf8" path="./initial-scheme-test/05.create-accounts_roles-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="initial-categories" author="Alexander Savickij">
+        <sqlFile encoding="utf8" path="./initial-scheme-test/06.create-categories-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="initial-items" author="Alexander Savickij">
+        <sqlFile encoding="utf8" path="./initial-scheme-test/07.create-items-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="initial-order_statuses" author="Alexander Savickij">
+        <sqlFile encoding="utf8" path="./initial-scheme-test/08.create-order_statuses-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="initial-orders" author="Alexander Savickij">
+        <sqlFile encoding="utf8" path="./initial-scheme-test/09.create-orders-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="initial-orders_items" author="Alexander Savickij">
+        <sqlFile encoding="utf8" path="./initial-scheme-test/10.create-orders_items-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="initial-transactions" author="Alexander Savickij">
+        <sqlFile encoding="utf8" path="./initial-scheme-test/11.create-transactions-table.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+</databaseChangeLog>
