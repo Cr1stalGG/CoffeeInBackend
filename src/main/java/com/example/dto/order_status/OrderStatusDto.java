@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderStatusDto {
-    private UUID id;
+    private UUID uuid;
     private String name;
     private String description;
 }
