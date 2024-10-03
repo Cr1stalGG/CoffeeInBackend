@@ -1,6 +1,4 @@
-package com.example.dto.order_status;
-
-import java.util.UUID;
+package com.example.dto.category;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -13,8 +11,7 @@ import lombok.AllArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderStatusDto {
-    private UUID uuid;
+public class CategoryCreationDto {
     private String name;
     private String description;
 }

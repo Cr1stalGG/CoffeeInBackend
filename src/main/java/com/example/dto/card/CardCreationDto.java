@@ -1,6 +1,4 @@
-package com.example.dto.order_status;
-
-import java.util.UUID;
+package com.example.dto.card;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -13,8 +11,8 @@ import lombok.AllArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderStatusDto {
-    private UUID uuid;
-    private String name;
-    private String description;
+public class CardCreationDto {
+    private String number;
+    private String password;
+    private String cvv;
 }
