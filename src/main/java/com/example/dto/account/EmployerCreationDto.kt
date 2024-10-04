@@ -1,4 +1,4 @@
-package com.example.controller
+package com.example.dto.account
 
 data class EmployerCreationDto(
     val nickname: String,

@@ -1,6 +1,6 @@
 package com.example.service
 
-import com.example.controller.EmployerCreationDto
+import com.example.dto.account.EmployerCreationDto
 import com.example.dto.account.AccountFullDto
 import com.example.dto.category.CategoryCreationDto
 import com.example.dto.category.CategoryDto

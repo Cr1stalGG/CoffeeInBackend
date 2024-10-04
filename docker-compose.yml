@@ -59,6 +59,7 @@ services:
       - SPRING_MINIO_HOST=http://minio:9001/
       - SPRING_MINIO_USERNAME=superadmin
       - SPRING_MINIO_PASSWORD=pass123
+      - SPRING_IS_BEAN_ENABLED=true
       - REDIS_HOST=redis
       - REDIS_PORT=6379
 
