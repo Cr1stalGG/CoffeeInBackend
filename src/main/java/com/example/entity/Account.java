@@ -71,4 +71,11 @@ public class Account {
         this.login = login;
         this.password = password;
     }
+
+    public Account(String nickname, String login, String password, List<Role> roles){
+        this.nickname = nickname;
+        this.login = login;
+        this.password = password;
+        this.roles = roles;
+    }
 }

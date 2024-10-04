@@ -19,7 +19,7 @@ import java.util.*
 @RestController
 @RequestMapping("/api/v1/accounts")
 class AccountController (
-    val accountService: AccountService
+    private val accountService: AccountService
 ){
     @GetMapping
     @Cacheable(value = ["accounts"])

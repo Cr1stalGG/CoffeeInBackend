@@ -20,7 +20,7 @@ import java.util.UUID
 @RestController
 @RequestMapping("/api/v1/items")
 class ItemController(
-    val itemService: ItemService,
+    private val itemService: ItemService,
 ) {
     @GetMapping("/{id}")
     fun findById(@PathVariable("id") id: UUID): ItemDto {

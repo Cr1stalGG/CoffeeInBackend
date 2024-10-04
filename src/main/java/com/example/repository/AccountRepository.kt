@@ -9,6 +9,6 @@ import java.util.*
 @Repository
 @RedisHash
 interface AccountRepository: JpaRepository<Account, UUID> {
-    fun findByLogin(login: String): Account?
+    fun findByLogin(login: String): Optional<Account>
     fun existsByLogin(login: String): Boolean
 }
