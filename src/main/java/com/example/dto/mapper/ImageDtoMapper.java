@@ -3,8 +3,8 @@ package com.example.dto.mapper;
 import com.example.dto.image.ImageCreationDto;
 import com.example.dto.image.ImageDto;
 import com.example.entity.Image;
-import lombok.experimental.UtilityClass;
 import java.util.Optional;
+import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class ImageDtoMapper {

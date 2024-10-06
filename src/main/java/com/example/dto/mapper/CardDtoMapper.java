@@ -9,6 +9,7 @@ import lombok.experimental.UtilityClass;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @UtilityClass
 public class CardDtoMapper {
@@ -25,11 +26,9 @@ public class CardDtoMapper {
     }
 
     private static Card buildEntity(CardCreationDto source){
-        return Card.builder()
-                .number(source.getNumber())
-                .password(source.getPassword())
-                .cvv(source.getCvv())
-                .build();
+        Random random = new Random();
+        Double money = random.nextDouble(3000) + 500;
+        return new Card(source.getNumber(), source.getPassword(), source.getCvv(), money);
     }
 
     private static CardDto buildDto(Card source){

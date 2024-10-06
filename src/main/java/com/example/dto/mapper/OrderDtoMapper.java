@@ -1,6 +1,7 @@
 package com.example.dto.mapper;
 
 import com.example.dto.item.ItemDto;
+import com.example.dto.order.OrderCreationDto;
 import com.example.dto.order.OrderDto;
 import com.example.entity.Item;
 import com.example.entity.Order;
@@ -8,6 +9,7 @@ import lombok.experimental.UtilityClass;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @UtilityClass
 public class OrderDtoMapper {
@@ -17,6 +19,17 @@ public class OrderDtoMapper {
                 .orElse(null);
     }
 
+    public static Order convertDtoToEntity(OrderCreationDto source){
+        return Optional.ofNullable(source)
+                .map(OrderDtoMapper::buildEntity)
+                .orElse(null);
+    }
+
+    private static Order buildEntity(OrderCreationDto source){
+        return Order.builder()
+                .id(source.getAccountId())
+                .build();
+    }
     private static OrderDto buildDto(Order source){
         return OrderDto.builder()
                 .uuid(source.getId())

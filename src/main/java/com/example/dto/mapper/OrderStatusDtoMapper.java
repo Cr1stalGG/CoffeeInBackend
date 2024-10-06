@@ -13,6 +13,19 @@ public class OrderStatusDtoMapper {
                 .orElse(null);
     }
 
+    public static OrderStatus convertDtoToEntity(OrderStatusDto source){
+        return Optional.ofNullable(source)
+                .map(OrderStatusDtoMapper::buildEntity)
+                .orElse(null);
+    }
+
+    private static OrderStatus buildEntity(OrderStatusDto source){
+        return OrderStatus.builder()
+                .name(source.getName())
+                .description(source.getDescription())
+                .build();
+    }
+
     private static OrderStatusDto buildDto(OrderStatus source){
         return OrderStatusDto.builder()
                 .uuid(source.getId())

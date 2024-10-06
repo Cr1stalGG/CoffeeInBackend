@@ -2,6 +2,7 @@ package com.example.dto.mapper;
 
 import com.example.dto.account.AccountFullDto;
 import com.example.dto.account.AccountShortсutDto;
+import com.example.dto.card.CardCreationDto;
 import com.example.dto.card.CardDto;
 import com.example.dto.role.RoleDto;
 import com.example.entity.Account;
@@ -26,9 +27,22 @@ public class AccountDtoMapper {
                 .orElse(null);
     }
 
+    public static Account convertDtoToEntity(AccountFullDto source){
+        return Optional.ofNullable(source)
+                .map(AccountDtoMapper::buildEntity)
+                .orElse(null);
+    }
+
+    private static Account buildEntity(AccountFullDto source){
+        return Account.builder()
+                .nickname(source.getNickname())
+                .login(source.getLogin())
+                .image(ImageDtoMapper.convertDtoToEntity(source.getImage()))
+                .build();
+    }
+
     private static AccountShortсutDto buildShortcutDto(Account source){
         return AccountShortсutDto.builder()
-                .uuid(source.getId())
                 .nickname(source.getNickname())
                 .login(source.getLogin())
                 .image(ImageDtoMapper.convertEntityToDto(source.getImage()))
@@ -37,30 +51,11 @@ public class AccountDtoMapper {
 
     private static AccountFullDto buildFullDto(Account source) {
         return AccountFullDto.builder()
-                .uuid(source.getId())
                 .nickname(source.getNickname())
                 .login(source.getLogin())
                 .image(ImageDtoMapper.convertEntityToDto(source.getImage()))
-                .cards(buildCards(source.getCards()))
-                .roles(buildRoles(source.getRoles()))
                 .build();
     }
 
-    private static List<CardDto> buildCards(List<Card> source) {
-        if(source == null)
-            return new ArrayList<>();
-        else
-            return source.stream()
-                    .map(CardDtoMapper::convertEntityToDto)
-                    .toList();
-    }
 
-    private static List<RoleDto> buildRoles(List<Role> source) {
-        if(source == null)
-            return new ArrayList<>();
-        else
-            return source.stream()
-                    .map(RoleDtoMapper::convertEntityToDto)
-                    .toList();
-    }
 }
