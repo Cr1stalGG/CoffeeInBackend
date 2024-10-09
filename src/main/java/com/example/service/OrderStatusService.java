@@ -8,6 +8,5 @@ import java.util.UUID;
 public interface OrderStatusService {
     List<OrderStatusDto> findAll();
     OrderStatusDto findById(UUID uuid);
-    OrderStatusDto save(UUID orderId, OrderStatusDto orderStatusDto);
     void deleteById(UUID uuid);
 }

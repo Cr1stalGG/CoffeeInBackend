@@ -6,20 +6,19 @@ import com.example.dto.mapper.CardDtoMapper;
 import com.example.entity.Account;
 import com.example.entity.Card;
 import com.example.exception.AccountWithIdNotFoundException;
+import com.example.exception.CardWithIdNotFoundException;
 import com.example.repository.AccountRepository;
 import com.example.repository.CardRepository;
 import com.example.service.CardService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-@EnableTransactionManagement
 public class CardServiceImpl implements CardService{
 
     private final CardRepository cardRepository;
@@ -35,7 +34,7 @@ public class CardServiceImpl implements CardService{
     @Override
     public CardDto findById(UUID uuid){
         Card card = cardRepository.findById(uuid)
-                .orElseThrow(() -> new AccountWithIdNotFoundException(uuid));
+                .orElseThrow(() -> new CardWithIdNotFoundException(uuid));
         return CardDtoMapper.convertEntityToDto(card);
     }
 
@@ -58,7 +57,7 @@ public class CardServiceImpl implements CardService{
     @Override
     public void deleteById(UUID uuid) {
         Card card = cardRepository.findById(uuid)
-                .orElseThrow(() -> new AccountWithIdNotFoundException(uuid));
+                .orElseThrow(() -> new CardWithIdNotFoundException(uuid));
         cardRepository.deleteById(uuid);
     }
 }

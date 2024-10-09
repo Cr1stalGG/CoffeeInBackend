@@ -3,7 +3,7 @@ package com.example.service.impl;
 import com.example.dto.mapper.TransactionDtoMapper;
 import com.example.dto.transaction.TransactionDto;
 import com.example.entity.Transaction;
-import com.example.exception.AccountWithIdNotFoundException;
+import com.example.exception.TransactionWithIdNotFoundException;
 import com.example.repository.CardRepository;
 import com.example.repository.OrderRepository;
 import com.example.repository.TransactionRepository;
@@ -31,14 +31,14 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public TransactionDto findById(UUID uuid){
         Transaction transaction = transactionRepository.findById(uuid)
-                .orElseThrow(() -> new AccountWithIdNotFoundException(uuid));
+                .orElseThrow(() -> new TransactionWithIdNotFoundException(uuid));
         return TransactionDtoMapper.convertEntityToDto(transaction);
     }
 
     @Override
     public void deleteById(UUID uuid){
         Transaction transaction = transactionRepository.findById(uuid)
-                .orElseThrow(() -> new AccountWithIdNotFoundException(uuid));
+                .orElseThrow(() -> new TransactionWithIdNotFoundException(uuid));
        transactionRepository.deleteById(uuid);
     }
 }

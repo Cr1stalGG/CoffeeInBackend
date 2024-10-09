@@ -4,7 +4,7 @@ import com.example.dto.image.ImageCreationDto;
 import com.example.dto.image.ImageDto;
 import com.example.dto.mapper.ImageDtoMapper;
 import com.example.entity.Image;
-import com.example.exception.AccountWithIdNotFoundException;
+import com.example.exception.ImageWithIdNotFoundException;
 import com.example.repository.ImageRepository;
 import com.example.service.ImageService;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +28,7 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public ImageDto findById(UUID uuid){
         Image image = imageRepository.findById(uuid)
-                .orElseThrow(() -> new AccountWithIdNotFoundException(uuid));
+                .orElseThrow(() -> new ImageWithIdNotFoundException(uuid));
         return ImageDtoMapper.convertEntityToDto(image);
     }
 
@@ -42,7 +42,7 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public void deleteById(UUID uuid){
         Image image = imageRepository.findById(uuid)
-                .orElseThrow(() -> new AccountWithIdNotFoundException(uuid));
+                .orElseThrow(() -> new  ImageWithIdNotFoundException(uuid));
         imageRepository.deleteById(uuid);
     }
 }

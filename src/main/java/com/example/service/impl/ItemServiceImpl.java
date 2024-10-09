@@ -5,21 +5,20 @@ import com.example.dto.item.ItemDto;
 import com.example.dto.mapper.ItemDtoMapper;
 import com.example.entity.Category;
 import com.example.entity.Item;
-import com.example.exception.AccountWithIdNotFoundException;
+import com.example.exception.CategoryWithIdNotFoundException;
+import com.example.exception.ItemWithIdNotFoundException;
 import com.example.repository.CategoryRepository;
 import com.example.repository.ItemRepository;
 import com.example.service.ItemService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-@EnableTransactionManagement
 public class ItemServiceImpl implements ItemService{
 
     private final ItemRepository itemRepository;
@@ -35,7 +34,7 @@ public class ItemServiceImpl implements ItemService{
     @Override
     public ItemDto findById(UUID uuid){
         Item item  = itemRepository.findById(uuid)
-                .orElseThrow(() -> new AccountWithIdNotFoundException(uuid));
+                .orElseThrow(() -> new ItemWithIdNotFoundException(uuid));
         return ItemDtoMapper.convertEntityToDto(item);
     }
 
@@ -52,15 +51,14 @@ public class ItemServiceImpl implements ItemService{
             return ItemDtoMapper.convertEntityToDto(item);
         }
         else{
-            throw new AccountWithIdNotFoundException(categoryId);
+            throw new CategoryWithIdNotFoundException(categoryId);
         }
     }
-
 
     @Override
     public void deleteById(UUID uuid){
         Item item = itemRepository.findById(uuid)
-                .orElseThrow(() -> new AccountWithIdNotFoundException(uuid));
+                .orElseThrow(() -> new ItemWithIdNotFoundException(uuid));
         itemRepository.deleteById(uuid);
     }
 }

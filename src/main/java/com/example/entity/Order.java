@@ -32,7 +32,7 @@ public class Order {
     @UuidGenerator(style = UuidGenerator.Style.AUTO)
     private UUID id;
     @Column(name = "closing_time")
-    private Date cosingTime;
+    private Date closingTime;
     @Column(name = "summary_price")
     private Double summaryPrice;
 

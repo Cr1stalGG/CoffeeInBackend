@@ -8,8 +8,8 @@ import com.example.entity.Transaction;
 import lombok.experimental.UtilityClass;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
+import java.util.Optional;
 
 @UtilityClass
 public class CardDtoMapper {
@@ -27,8 +27,12 @@ public class CardDtoMapper {
 
     private static Card buildEntity(CardCreationDto source){
         Random random = new Random();
-        Double money = random.nextDouble(3000) + 500;
-        return new Card(source.getNumber(), source.getPassword(), source.getCvv(), money);
+        return Card.builder()
+                .number(source.getNumber())
+                .password(source.getPassword())
+                .cvv(source.getCvv())
+                .money(random.nextDouble(3000) + 500)
+                .build();
     }
 
     private static CardDto buildDto(Card source){

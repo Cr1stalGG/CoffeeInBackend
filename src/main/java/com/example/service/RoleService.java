@@ -7,6 +7,5 @@ import java.util.UUID;
 public interface RoleService {
     List<RoleDto> findAll();
     RoleDto findById(UUID uuid);
-    RoleDto save(RoleDto creationDto);
     void deleteById(UUID uuid);
 }

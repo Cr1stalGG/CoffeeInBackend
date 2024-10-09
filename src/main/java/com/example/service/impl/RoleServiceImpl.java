@@ -3,7 +3,7 @@ package com.example.service.impl;
 import com.example.dto.mapper.RoleDtoMapper;
 import com.example.dto.role.RoleDto;
 import com.example.entity.Role;
-import com.example.exception.AccountWithIdNotFoundException;
+import com.example.exception.RoleWithIdNotFoundException;
 import com.example.repository.RoleRepository;
 import com.example.service.RoleService;
 import lombok.RequiredArgsConstructor;
@@ -27,21 +27,14 @@ public class RoleServiceImpl implements RoleService{
     @Override
     public RoleDto findById(UUID uuid){
         Role role = roleRepository.findById(uuid)
-                .orElseThrow(() -> new AccountWithIdNotFoundException(uuid));
-        return RoleDtoMapper.convertEntityToDto(role);
-    }
-
-    @Override
-    public RoleDto save(RoleDto roleDto){
-        Role role = RoleDtoMapper.convertDtoToEntity(roleDto);
-        roleRepository.save(role);
+                .orElseThrow(() -> new RoleWithIdNotFoundException(uuid));
         return RoleDtoMapper.convertEntityToDto(role);
     }
 
     @Override
     public void deleteById(UUID uuid){
         Role role = roleRepository.findById(uuid)
-                .orElseThrow(() -> new AccountWithIdNotFoundException(uuid));
+                .orElseThrow(() -> new RoleWithIdNotFoundException(uuid));
         roleRepository.deleteById(uuid);
     }
 }

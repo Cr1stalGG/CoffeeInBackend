@@ -4,7 +4,7 @@ import com.example.dto.category.CategoryCreationDto;
 import com.example.dto.category.CategoryDto;
 import com.example.dto.mapper.CategoryDtoMapper;
 import com.example.entity.Category;
-import com.example.exception.AccountWithIdNotFoundException;
+import com.example.exception.CategoryWithIdNotFoundException;
 import com.example.repository.CategoryRepository;
 import com.example.service.CategoryService;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +28,7 @@ public class CategoryServiceImpl implements CategoryService{
     @Override
     public CategoryDto findById(UUID uuid){
         Category category= categoryRepository.findById(uuid)
-                .orElseThrow(() -> new AccountWithIdNotFoundException(uuid));
+                .orElseThrow(() -> new CategoryWithIdNotFoundException(uuid));
         return CategoryDtoMapper.convertEntityToDto(category);
     }
 
@@ -42,7 +42,7 @@ public class CategoryServiceImpl implements CategoryService{
     @Override
     public void deleteById(UUID uuid){
         Category category = categoryRepository.findById(uuid)
-                .orElseThrow(() -> new AccountWithIdNotFoundException(uuid));
+                .orElseThrow(() -> new CategoryWithIdNotFoundException(uuid));
         categoryRepository.deleteById(uuid);
     }
 }
