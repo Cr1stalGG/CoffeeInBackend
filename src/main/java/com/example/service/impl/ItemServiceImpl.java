@@ -2,6 +2,7 @@ package com.example.service.impl;
 
 import com.example.dto.item.ItemCreationDto;
 import com.example.dto.item.ItemDto;
+import com.example.dto.item.ItemUpdateDto;
 import com.example.dto.mapper.ItemDtoMapper;
 import com.example.entity.Category;
 import com.example.entity.Item;
@@ -12,9 +13,9 @@ import com.example.repository.ItemRepository;
 import com.example.service.ItemService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -35,30 +36,59 @@ public class ItemServiceImpl implements ItemService{
     public ItemDto findById(UUID uuid){
         Item item  = itemRepository.findById(uuid)
                 .orElseThrow(() -> new ItemWithIdNotFoundException(uuid));
+
         return ItemDtoMapper.convertEntityToDto(item);
     }
 
     @Transactional
     @Override
     public ItemDto save(UUID categoryId, ItemCreationDto creationDto){
-        Optional<Category> category = categoryRepository.findById(categoryId);
-        if(category.isPresent()){
+        Category category = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new CategoryWithIdNotFoundException(categoryId));
+
             Item item = ItemDtoMapper.convertDtoToEntity(creationDto);
-            item.setCategory(category.get());
+
+            item.setCategory(category);
             itemRepository.save(item);
-            category.get().getItems().add(item);
-            categoryRepository.save(category.get());
+
+            category.getItems().add(item);
+
             return ItemDtoMapper.convertEntityToDto(item);
+    }
+
+    @Transactional
+    @Override
+    public ItemDto updateItem(UUID itemId, @NotNull ItemUpdateDto updateDto){
+        Item item = itemRepository.findById(itemId)
+                .orElseThrow(() -> new ItemWithIdNotFoundException(itemId));
+
+        if(!updateDto.getName().isEmpty()){
+            item.setName(updateDto.getName());
         }
-        else{
-            throw new CategoryWithIdNotFoundException(categoryId);
+
+        if(!updateDto.getDescription().isEmpty()){
+            item.setDescription(updateDto.getDescription());
         }
+
+        if(updateDto.getPrice() != null){
+            item.setPrice(updateDto.getPrice());
+        }
+
+        if(updateDto.getCategoryId() != null){
+            Category category = categoryRepository.findById(updateDto.getCategoryId())
+                    .orElseThrow(()-> new CategoryWithIdNotFoundException(updateDto.getCategoryId()));
+
+            item.setCategory(category);
+        }
+
+        return ItemDtoMapper.convertEntityToDto(item);
     }
 
     @Override
     public void deleteById(UUID uuid){
         Item item = itemRepository.findById(uuid)
                 .orElseThrow(() -> new ItemWithIdNotFoundException(uuid));
+
         itemRepository.deleteById(uuid);
     }
 }

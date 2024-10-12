@@ -20,16 +20,16 @@ public class ImageDtoMapper {
                 .orElse(null);
     }
 
-    private static ImageDto buildDto(Image source){
-        return ImageDto.builder()
-                .uuid(source.getId())
+    private static Image buildEntity(ImageCreationDto source){
+        return Image.builder()
                 .objectName(source.getObjectName())
                 .bucketName(source.getBucketName())
                 .build();
     }
 
-    private static Image buildEntity(ImageCreationDto source){
-        return Image.builder()
+    private static ImageDto buildDto(Image source){
+        return ImageDto.builder()
+                .uuid(source.getId())
                 .objectName(source.getObjectName())
                 .bucketName(source.getBucketName())
                 .build();

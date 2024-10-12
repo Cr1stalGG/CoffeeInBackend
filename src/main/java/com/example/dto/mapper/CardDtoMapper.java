@@ -26,12 +26,11 @@ public class CardDtoMapper {
     }
 
     private static Card buildEntity(CardCreationDto source){
-        Random random = new Random();
         return Card.builder()
                 .number(source.getNumber())
                 .password(source.getPassword())
                 .cvv(source.getCvv())
-                .money(random.nextDouble(3000) + 500)
+                .money((double) new Random().nextInt(500,3000))
                 .build();
     }
 
@@ -44,11 +43,13 @@ public class CardDtoMapper {
     }
 
     private static List<TransactionDto> buildTransactions(List<Transaction> source){
-        if(source == null)
+        if(source == null){
             return new ArrayList<>();
-        else
+        }
+        else {
             return source.stream()
                     .map(TransactionDtoMapper::convertEntityToDto)
                     .toList();
+        }
     }
 }

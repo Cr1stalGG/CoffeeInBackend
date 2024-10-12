@@ -7,6 +7,7 @@ import com.example.dto.card.CardDto;
 import com.example.dto.role.RoleDto;
 import com.example.entity.Account;
 import com.example.entity.Card;
+import com.example.entity.Image;
 import com.example.entity.Role;
 import lombok.experimental.UtilityClass;
 import java.util.ArrayList;
@@ -25,20 +26,6 @@ public class AccountDtoMapper {
         return Optional.ofNullable(source)
                 .map(AccountDtoMapper::buildShortcutDto)
                 .orElse(null);
-    }
-
-    public static Account convertDtoToEntity(AccountFullDto source){
-        return Optional.ofNullable(source)
-                .map(AccountDtoMapper::buildEntity)
-                .orElse(null);
-    }
-
-    private static Account buildEntity(AccountFullDto source){
-        return Account.builder()
-                .nickname(source.getNickname())
-                .login(source.getLogin())
-                .image(ImageDtoMapper.convertDtoToEntity(source.getImage()))
-                .build();
     }
 
     private static AccountShortсutDto buildShortcutDto(Account source){

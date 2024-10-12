@@ -8,9 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface OrderService {
-    List<OrderDto> findAll();
     OrderDto findById(UUID uuid);
     OrderDto save(UUID accountId, UUID orderStatusId, OrderCreationDto creationDto);
-    TransactionDto pay(UUID cardId, UUID orderId, TransactionDto creationDto);
     void deleteById(UUID uuid);
 }
