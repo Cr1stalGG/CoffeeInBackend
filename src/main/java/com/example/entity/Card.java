@@ -48,10 +48,4 @@ public class Card {
             orphanRemoval = true
     )
     private List<Transaction> transactions;
-
-    public Card(String number, String password, String cvv) {
-        this.number = number;
-        this.password = password;
-        this.cvv = cvv;
-    }
 }

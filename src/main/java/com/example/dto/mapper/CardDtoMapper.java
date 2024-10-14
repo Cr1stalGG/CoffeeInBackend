@@ -8,6 +8,7 @@ import com.example.entity.Transaction;
 import lombok.experimental.UtilityClass;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Optional;
 
 @UtilityClass
@@ -29,6 +30,7 @@ public class CardDtoMapper {
                 .number(source.getNumber())
                 .password(source.getPassword())
                 .cvv(source.getCvv())
+                .money((double) new Random().nextInt(500,3000))
                 .build();
     }
 
@@ -43,9 +45,9 @@ public class CardDtoMapper {
     private static List<TransactionDto> buildTransactions(List<Transaction> source){
         if(source == null)
             return new ArrayList<>();
-        else
-            return source.stream()
-                    .map(TransactionDtoMapper::convertEntityToDto)
-                    .toList();
+
+        return source.stream()
+                .map(TransactionDtoMapper::convertEntityToDto)
+                .toList();
     }
 }

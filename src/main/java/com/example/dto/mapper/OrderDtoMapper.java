@@ -20,7 +20,7 @@ public class OrderDtoMapper {
     private static OrderDto buildDto(Order source){
         return OrderDto.builder()
                 .uuid(source.getId())
-                .closingTime(source.getCosingTime())
+                .closingTime(source.getClosingTime())
                 .items(buildItems(source.getItems()))
                 .summaryPrice(source.getSummaryPrice())
                 .build();

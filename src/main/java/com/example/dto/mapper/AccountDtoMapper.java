@@ -2,10 +2,12 @@ package com.example.dto.mapper;
 
 import com.example.dto.account.AccountFullDto;
 import com.example.dto.account.AccountShortсutDto;
+import com.example.dto.card.CardCreationDto;
 import com.example.dto.card.CardDto;
 import com.example.dto.role.RoleDto;
 import com.example.entity.Account;
 import com.example.entity.Card;
+import com.example.entity.Image;
 import com.example.entity.Role;
 import lombok.experimental.UtilityClass;
 import java.util.ArrayList;
@@ -40,9 +42,9 @@ public class AccountDtoMapper {
                 .uuid(source.getId())
                 .nickname(source.getNickname())
                 .login(source.getLogin())
-                .image(ImageDtoMapper.convertEntityToDto(source.getImage()))
                 .cards(buildCards(source.getCards()))
                 .roles(buildRoles(source.getRoles()))
+                .image(ImageDtoMapper.convertEntityToDto(source.getImage()))
                 .build();
     }
 
@@ -51,8 +53,8 @@ public class AccountDtoMapper {
             return new ArrayList<>();
         else
             return source.stream()
-                    .map(CardDtoMapper::convertEntityToDto)
-                    .toList();
+                .map(CardDtoMapper::convertEntityToDto)
+                .toList();
     }
 
     private static List<RoleDto> buildRoles(List<Role> source) {
