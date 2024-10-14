@@ -19,7 +19,6 @@ import com.example.repository.ItemRepository;
 import com.example.service.OrderService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import java.sql.Date;
 import java.util.List;
@@ -46,7 +45,7 @@ public class OrderServiceImpl implements OrderService{
 
     @Transactional
     @Override
-    public OrderDto save(UUID accountId, UUID orderStatusId, @NotNull OrderCreationDto creationDto){
+    public OrderDto save(UUID accountId, UUID orderStatusId, OrderCreationDto creationDto){
         Account account = accountRepository.findById(accountId)
                 .orElseThrow(() -> new AccountWithIdNotFoundException(accountId));
 

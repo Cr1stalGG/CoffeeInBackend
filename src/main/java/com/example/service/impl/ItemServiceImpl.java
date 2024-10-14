@@ -13,7 +13,6 @@ import com.example.repository.ItemRepository;
 import com.example.service.ItemService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
@@ -58,7 +57,7 @@ public class ItemServiceImpl implements ItemService{
 
     @Transactional
     @Override
-    public ItemDto updateItem(UUID itemId, @NotNull ItemUpdateDto updateDto){
+    public ItemDto updateItem(UUID itemId, ItemUpdateDto updateDto){
         Item item = itemRepository.findById(itemId)
                 .orElseThrow(() -> new ItemWithIdNotFoundException(itemId));
 

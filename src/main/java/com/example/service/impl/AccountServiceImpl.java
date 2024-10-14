@@ -14,7 +14,6 @@ import com.example.repository.ImageRepository;
 import com.example.service.AccountService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
@@ -57,7 +56,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountFullDto updateAccount(UUID accountId, @NotNull AccountUpdateDto updateDto){
+    public AccountFullDto updateAccount(UUID accountId, AccountUpdateDto updateDto){
         Account account = accountRepository.findById(accountId)
                 .orElseThrow(() -> new AccountWithIdNotFoundException(accountId));
 
