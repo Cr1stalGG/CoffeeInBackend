@@ -62,17 +62,14 @@ public class ItemServiceImpl implements ItemService{
         Item item = itemRepository.findById(itemId)
                 .orElseThrow(() -> new ItemWithIdNotFoundException(itemId));
 
-        if(!updateDto.getName().isEmpty()){
+        if(!updateDto.getName().isEmpty())
             item.setName(updateDto.getName());
-        }
 
-        if(!updateDto.getDescription().isEmpty()){
+        if(!updateDto.getDescription().isEmpty())
             item.setDescription(updateDto.getDescription());
-        }
 
-        if(updateDto.getPrice() != null){
+        if(updateDto.getPrice() > 0.0)
             item.setPrice(updateDto.getPrice());
-        }
 
         if(updateDto.getCategoryId() != null){
             Category category = categoryRepository.findById(updateDto.getCategoryId())

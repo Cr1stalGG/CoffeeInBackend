@@ -17,5 +17,5 @@ public class ItemUpdateDto {
     private String name;
     private String description;
     private UUID categoryId;
-    private Double price;
+    private double price;
 }

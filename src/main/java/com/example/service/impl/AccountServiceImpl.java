@@ -51,6 +51,7 @@ public class AccountServiceImpl implements AccountService {
 
         imageRepository.save(image);
         account.setImage(image);
+        accountRepository.save(account);
 
         return AccountDtoMapper.convertEntityToFullDto(account);
     }
@@ -60,15 +61,15 @@ public class AccountServiceImpl implements AccountService {
         Account account = accountRepository.findById(accountId)
                 .orElseThrow(() -> new AccountWithIdNotFoundException(accountId));
 
-        if(!updateDto.getLogin().isEmpty()){
+        if(!updateDto.getLogin().isEmpty())
             account.setLogin(updateDto.getLogin());
-        }
-        if(!updateDto.getNickname().isEmpty()){
+
+        if(!updateDto.getNickname().isEmpty())
             account.setNickname(updateDto.getNickname());
-        }
-        if(!updateDto.getPassword().isEmpty()){
+
+        if(!updateDto.getPassword().isEmpty())
             account.setPassword(updateDto.getPassword());
-        }
+
 
         return AccountDtoMapper.convertEntityToFullDto(account);
     }

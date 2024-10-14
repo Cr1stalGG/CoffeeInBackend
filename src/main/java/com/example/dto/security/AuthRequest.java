@@ -1,20 +1,18 @@
 package com.example.dto.security;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
 @AllArgsConstructor
 public class AuthRequest {
-    @JsonProperty("login")
     private String login;
-
-    @JsonProperty("password")
     private String password;
-
-    @JsonProperty("nickname")
     private String nickname;
 }

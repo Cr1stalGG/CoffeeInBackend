@@ -43,13 +43,11 @@ public class CardDtoMapper {
     }
 
     private static List<TransactionDto> buildTransactions(List<Transaction> source){
-        if(source == null){
+        if(source == null)
             return new ArrayList<>();
-        }
-        else {
-            return source.stream()
-                    .map(TransactionDtoMapper::convertEntityToDto)
-                    .toList();
-        }
+
+        return source.stream()
+                .map(TransactionDtoMapper::convertEntityToDto)
+                .toList();
     }
 }

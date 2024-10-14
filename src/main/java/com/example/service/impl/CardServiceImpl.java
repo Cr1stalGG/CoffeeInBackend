@@ -36,7 +36,7 @@ public class CardServiceImpl implements CardService{
 
     @Override
     public List<CardDto> findByAccountId(UUID uuid){
-        return cardRepository.findByIdOwner(uuid).stream()
+        return cardRepository.findByOwner_Id(uuid).stream()
                 .map(CardDtoMapper::convertEntityToDto)
                 .toList();
     }
@@ -74,9 +74,9 @@ public class CardServiceImpl implements CardService{
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new OrderWithIdNotFoundException(orderId));
 
-        if (card.getMoney() < order.getSummaryPrice()) {
+        if (card.getMoney() < order.getSummaryPrice())
             throw new LackOfMoneyException(card.getNumber(), order.getSummaryPrice());
-        }
+
 
         card.setMoney(card.getMoney() - order.getSummaryPrice());
 

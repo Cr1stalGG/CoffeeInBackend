@@ -23,7 +23,6 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import java.sql.Date;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -60,17 +59,16 @@ public class OrderServiceImpl implements OrderService{
                 .orderStatus(orderStatus)
                 .build();
 
-        Optional.ofNullable(creationDto.getItemsId())
-                .ifPresent(itemsIds -> {
-                    List<Item> items = itemRepository.findAllById(creationDto.getItemsId());
+        if (creationDto.getItemsId() != null) {
+            List<Item> items = itemRepository.findAllById(creationDto.getItemsId());
+            order.setItems(items);
 
-                    order.setItems(items);
-
-                    double summaryPrice = items.stream()
-                            .mapToDouble(Item::getPrice)
-                            .sum();
-                    order.setSummaryPrice(summaryPrice);
-                });
+            double summaryPrice = 0;
+            for (Item item : items) {
+                summaryPrice += item.getPrice();
+            }
+            order.setSummaryPrice(summaryPrice);
+        }
 
         orderRepository.save(order);
 
