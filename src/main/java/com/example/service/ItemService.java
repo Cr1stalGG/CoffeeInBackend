@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.dto.image.ImageCreationDto;
 import com.example.dto.item.ItemCreationDto;
 import com.example.dto.item.ItemDto;
 import com.example.dto.item.ItemUpdateDto;
@@ -11,6 +12,7 @@ public interface ItemService {
     List<ItemDto> findAll();
     ItemDto findById(UUID uuid);
     ItemDto save(UUID categoryId, ItemCreationDto creationDto);
+    ItemDto setImage(UUID id, ImageCreationDto imageDto);
     ItemDto updateItem(UUID itemId, ItemUpdateDto updateDto);
     void deleteById(UUID uuid);
 }

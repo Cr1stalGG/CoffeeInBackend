@@ -45,8 +45,6 @@
 			<version>${spring-doc.version}</version>
 		</dependency>
 
-
-
 		<!--CACHING-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

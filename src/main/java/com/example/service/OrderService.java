@@ -10,5 +10,6 @@ import java.util.UUID;
 public interface OrderService {
     OrderDto findById(UUID uuid);
     OrderDto save(UUID accountId, UUID orderStatusId, OrderCreationDto creationDto);
+    OrderDto changeOrderStatus(UUID orderId);
     void deleteById(UUID uuid);
 }

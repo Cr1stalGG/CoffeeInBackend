@@ -1,14 +1,18 @@
 package com.example.service.impl;
 
+import com.example.dto.image.ImageCreationDto;
 import com.example.dto.item.ItemCreationDto;
 import com.example.dto.item.ItemDto;
 import com.example.dto.item.ItemUpdateDto;
+import com.example.dto.mapper.ImageDtoMapper;
 import com.example.dto.mapper.ItemDtoMapper;
 import com.example.entity.Category;
+import com.example.entity.Image;
 import com.example.entity.Item;
 import com.example.exception.CategoryWithIdNotFoundException;
 import com.example.exception.ItemWithIdNotFoundException;
 import com.example.repository.CategoryRepository;
+import com.example.repository.ImageRepository;
 import com.example.repository.ItemRepository;
 import com.example.service.ItemService;
 import jakarta.transaction.Transactional;
@@ -23,6 +27,7 @@ public class ItemServiceImpl implements ItemService{
 
     private final ItemRepository itemRepository;
     private final CategoryRepository categoryRepository;
+    private final ImageRepository imageRepository ;
 
     @Override
     public List<ItemDto> findAll(){
@@ -53,6 +58,22 @@ public class ItemServiceImpl implements ItemService{
             category.getItems().add(item);
 
             return ItemDtoMapper.convertEntityToDto(item);
+    }
+
+    @Transactional
+    @Override
+    public ItemDto setImage(UUID id, ImageCreationDto imageDto) {
+
+        Image image = ImageDtoMapper.convertDtoToEntity(imageDto);
+
+        Item item = itemRepository.findById(id)
+                .orElseThrow(() -> new ItemWithIdNotFoundException(id));
+
+        imageRepository.save(image);
+
+        item.setImage(image);
+
+        return ItemDtoMapper.convertEntityToDto(item);
     }
 
     @Transactional

@@ -1,7 +1,7 @@
 package com.example.service.impl;
 
 import com.example.dto.account.AccountFullDto;
-import com.example.dto.account.AccountShortсutDto;
+import com.example.dto.account.AccountShortcutDto;
 import com.example.dto.account.AccountUpdateDto;
 import com.example.dto.image.ImageCreationDto;
 import com.example.dto.mapper.AccountDtoMapper;
@@ -15,10 +15,13 @@ import com.example.service.AccountService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 import java.util.List;
 import java.util.UUID;
 
+
 @Service
+@Validated
 @RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
 
@@ -26,7 +29,7 @@ public class AccountServiceImpl implements AccountService {
     private final ImageRepository imageRepository;
 
     @Override
-    public List<AccountShortсutDto> findAll(){
+    public List<AccountShortcutDto> findAll(){
         return accountRepository.findAll().stream()
                 .map(AccountDtoMapper::convertEntityToShortcutDto)
                 .toList();

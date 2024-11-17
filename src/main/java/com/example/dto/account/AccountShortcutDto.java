@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountShortсutDto {
+public class AccountShortcutDto {
     private UUID uuid;
     private String nickname;
     private String login;
