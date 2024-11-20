@@ -4,6 +4,7 @@ import com.example.dto.card.CardCreationDto;
 import com.example.dto.card.CardDto;
 import com.example.dto.transaction.TransactionDto;
 import com.example.service.CardService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,12 +19,9 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/cards")
+@RequiredArgsConstructor
 public class CardController {
     private final CardService cardService;
-
-    public CardController(CardService cardService) {
-        this.cardService = cardService;
-    }
 
     @GetMapping("/{id}")
     public ResponseEntity<CardDto> findById(@PathVariable("id") UUID id) {

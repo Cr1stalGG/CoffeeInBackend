@@ -6,6 +6,7 @@ import com.example.dto.account.AccountUpdateDto;
 import com.example.dto.image.ImageCreationDto;
 import com.example.service.AccountService;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
@@ -21,13 +22,9 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/accounts")
+@RequiredArgsConstructor
 public class AccountController {
-
-    private final AccountService accountService;
-
-    public AccountController(AccountService accountService) {
-        this.accountService = accountService;
-    }
+    private AccountService accountService;
 
     @GetMapping
     @Cacheable(value = "accounts")

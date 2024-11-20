@@ -5,6 +5,7 @@ import com.example.dto.order.OrderDto;
 import com.example.exception.AccountWithIdNotFoundException;
 import com.example.exception.OrderStatusWithIdNotFoundException;
 import com.example.service.OrderService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,12 +20,9 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/orders")
+@RequiredArgsConstructor
 public class OrderController {
     private final OrderService orderService;
-
-    public OrderController(OrderService orderService) {
-        this.orderService = orderService;
-    }
 
     @GetMapping("/{id}")
     public ResponseEntity<OrderDto> findById(@PathVariable("id") UUID id) {

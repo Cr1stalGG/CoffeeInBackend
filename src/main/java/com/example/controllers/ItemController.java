@@ -5,6 +5,7 @@ import com.example.dto.item.ItemCreationDto;
 import com.example.dto.item.ItemDto;
 import com.example.dto.item.ItemUpdateDto;
 import com.example.service.ItemService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.HttpStatus;
@@ -22,13 +23,9 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/items")
+@RequiredArgsConstructor
 public class ItemController {
-
     private final ItemService itemService;
-
-    public ItemController(ItemService itemService) {
-        this.itemService = itemService;
-    }
 
     @GetMapping("/{id}")
     public ResponseEntity<ItemDto> findById(@PathVariable("id") UUID id) {
