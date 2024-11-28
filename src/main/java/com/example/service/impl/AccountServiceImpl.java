@@ -15,13 +15,10 @@ import com.example.service.AccountService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
 import java.util.List;
 import java.util.UUID;
 
-
 @Service
-@Validated
 @RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
 
