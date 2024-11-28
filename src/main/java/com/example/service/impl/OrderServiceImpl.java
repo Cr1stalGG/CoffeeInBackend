@@ -8,8 +8,10 @@ import com.example.entity.Item;
 import com.example.entity.Order;
 import com.example.entity.OrderStatus;
 import com.example.exception.OrderStatusWithIdNotFoundException;
+import com.example.exception.OrderStatusWithNameNotFoundException;
 import com.example.exception.OrderWithIdNotFoundException;
 import com.example.exception.AccountWithIdNotFoundException;
+import com.example.exception.handler.CannotChangeOrderStatusException;
 import com.example.repository.AccountRepository;
 import com.example.repository.CardRepository;
 import com.example.repository.OrderRepository;
@@ -17,12 +19,16 @@ import com.example.repository.TransactionRepository;
 import com.example.repository.OrderStatusRepository;
 import com.example.repository.ItemRepository;
 import com.example.service.OrderService;
+import com.example.service.enums.OrderStatusEnum;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.sql.Date;
 import java.util.List;
 import java.util.UUID;
+
+import static com.example.service.enums.OrderStatusEnum.STATUS_IN_PROGRESS;
+import static com.example.service.enums.OrderStatusEnum.STATUS_TAKEN;
 
 @Service
 @RequiredArgsConstructor
@@ -72,6 +78,39 @@ public class OrderServiceImpl implements OrderService{
         orderRepository.save(order);
 
         account.getOrders().add(order);
+
+        return OrderDtoMapper.convertEntityToDto(order);
+    }
+
+    @Transactional
+    @Override
+    public OrderDto changeOrderStatus(UUID orderId) {
+
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new OrderWithIdNotFoundException(orderId));
+
+        String newOrderStatusName;
+        String currentOrderStatusName = order.getOrderStatus().getName(); // Получаем строковое представление текущего статуса
+
+        switch (currentOrderStatusName) {
+            case "STATUS_TAKEN": // Сравниваем со строковыми значениями
+                newOrderStatusName = OrderStatusEnum.STATUS_IN_PROGRESS.getValue(); // Получаем новое значение статуса
+                break;
+            case "STATUS_IN_PROGRESS":
+                newOrderStatusName = OrderStatusEnum.STATUS_DONE.getValue();
+                break;
+            default:
+                throw new CannotChangeOrderStatusException(currentOrderStatusName);
+        }
+
+        OrderStatus previousOrderStatus = order.getOrderStatus();
+
+        OrderStatus newOrderStatus = orderStatusRepository.findByName(newOrderStatusName)
+                .orElseThrow(() -> new OrderStatusWithNameNotFoundException(newOrderStatusName));
+
+        previousOrderStatus.getOrders().remove(order);
+        order.setOrderStatus(newOrderStatus);
+        newOrderStatus.getOrders().add(order);
 
         return OrderDtoMapper.convertEntityToDto(order);
     }

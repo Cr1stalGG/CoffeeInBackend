@@ -1,13 +1,11 @@
 package com.example.dto.mapper;
 
 import com.example.dto.account.AccountFullDto;
-import com.example.dto.account.AccountShortсutDto;
-import com.example.dto.card.CardCreationDto;
+import com.example.dto.account.AccountShortcutDto;
 import com.example.dto.card.CardDto;
 import com.example.dto.role.RoleDto;
 import com.example.entity.Account;
 import com.example.entity.Card;
-import com.example.entity.Image;
 import com.example.entity.Role;
 import lombok.experimental.UtilityClass;
 import java.util.ArrayList;
@@ -22,14 +20,14 @@ public class AccountDtoMapper {
                 .orElse(null);
     }
 
-    public static AccountShortсutDto convertEntityToShortcutDto(Account source){
+    public static AccountShortcutDto convertEntityToShortcutDto(Account source){
         return Optional.ofNullable(source)
                 .map(AccountDtoMapper::buildShortcutDto)
                 .orElse(null);
     }
 
-    private static AccountShortсutDto buildShortcutDto(Account source){
-        return AccountShortсutDto.builder()
+    private static AccountShortcutDto buildShortcutDto(Account source){
+        return AccountShortcutDto.builder()
                 .uuid(source.getId())
                 .nickname(source.getNickname())
                 .login(source.getLogin())

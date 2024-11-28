@@ -7,6 +7,7 @@ import com.example.exception.ImageWithIdNotFoundException;
 import com.example.exception.ItemWithIdNotFoundException;
 import com.example.exception.LackOfMoneyException;
 import com.example.exception.OrderStatusWithIdNotFoundException;
+import com.example.exception.OrderStatusWithNameNotFoundException;
 import com.example.exception.OrderWithIdNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +23,9 @@ public class RestExceptionHandler {
             ImageWithIdNotFoundException.class,
             ItemWithIdNotFoundException.class,
             OrderStatusWithIdNotFoundException.class,
+            OrderStatusWithNameNotFoundException.class,
             OrderWithIdNotFoundException.class
+
     })
     public ResponseEntity<String> handleNotFoundException(Exception e){
         return new ResponseEntity<>("Not found error: " + e.getMessage(), HttpStatus.BAD_REQUEST);
