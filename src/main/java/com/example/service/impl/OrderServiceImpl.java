@@ -11,7 +11,7 @@ import com.example.exception.OrderStatusWithIdNotFoundException;
 import com.example.exception.OrderStatusWithNameNotFoundException;
 import com.example.exception.OrderWithIdNotFoundException;
 import com.example.exception.AccountWithIdNotFoundException;
-import com.example.exception.handler.CannotChangeOrderStatusException;
+import com.example.exception.CannotChangeOrderStatusException;
 import com.example.repository.AccountRepository;
 import com.example.repository.CardRepository;
 import com.example.repository.OrderRepository;
@@ -26,9 +26,6 @@ import org.springframework.stereotype.Service;
 import java.sql.Date;
 import java.util.List;
 import java.util.UUID;
-
-import static com.example.service.enums.OrderStatusEnum.STATUS_IN_PROGRESS;
-import static com.example.service.enums.OrderStatusEnum.STATUS_TAKEN;
 
 @Service
 @RequiredArgsConstructor

@@ -1,4 +1,4 @@
-package com.example.exception.handler;
+package com.example.exception;
 
 public class CannotChangeOrderStatusException extends RuntimeException {
     public CannotChangeOrderStatusException(String statusName) {
